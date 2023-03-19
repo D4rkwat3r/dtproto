@@ -14,18 +14,6 @@ import java.io.DataInputStream
 import kotlin.reflect.*
 import kotlin.reflect.full.*
 
-/* структура пакета
-ID
-REQUEST_ID
-FLAGS_COUNT - если есть, количество флагов
-0xA ... 0xF (флаги, опционально)
-Наличие аутентификации - 0x1A, если пакет имеет аутентификацию. В этом случае за 0x1A следует сначала его HMAC SHA256 сигнатура, а затем и сам DATA-объект, соодержащий USER_ID, ROLE_ID и AUTH_TIME в указанном порядке.
-FIELDS_COUNT - если есть DATA, количество полей DATA
-DATA - данные пакета
-
-DATA: 0xAA ... 0xFF, может включать дочерние объекты DATA
-*/
-
 abstract class DTPacket(
     var flags: MutableList<PacketFlag>,
     private val data: List<Any?> = emptyList(),
