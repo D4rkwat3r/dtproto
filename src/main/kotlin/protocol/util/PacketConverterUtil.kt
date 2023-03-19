@@ -23,7 +23,6 @@ object PacketConverterUtil {
                     return null
                 }
             }
-            // поддержка Set не имеет смысла
             if (
                 dataField is ArrayList<*>
                 && (parameter.type.arguments.getOrNull(0)?.type?.classifier as? KClass<*>)?.hasAnnotation<PacketData>() == true
